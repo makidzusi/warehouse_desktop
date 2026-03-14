@@ -17,7 +17,7 @@
 
     <content>
         <GridPane hgap="12" vgap="12">
-            <padding><Insets top="12" bottom="12"/></padding>
+            <padding><Insets top="12" right="12" bottom="12" left="12"/></padding>
 
             <Label text="Наименование *" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
             <TextField fx:id="nameField" promptText="Введите наименование"

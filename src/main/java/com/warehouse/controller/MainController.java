@@ -1,6 +1,5 @@
 package com.warehouse.controller;
 
-import com.warehouse.service.ServiceFactory;
 import com.warehouse.util.SessionManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +16,8 @@ import java.io.IOException;
 public class MainController {
 
     @FXML private StackPane contentArea;
-    @FXML private Label userInfoLabel;
+    @FXML private Label userNameLabel;
+    @FXML private Label userRoleLabel;
     @FXML private Button navDashboard;
     @FXML private Button navProducts;
     @FXML private Button navCategories;
@@ -32,7 +32,8 @@ public class MainController {
     public void initialize() {
         var user = session.getCurrentUser();
         if (user != null) {
-            userInfoLabel.setText(user.getFullName() + "\n" + user.getRole().getDisplayName());
+            userNameLabel.setText(user.getFullName());
+            userRoleLabel.setText(user.getRole().getDisplayName());
         }
 
         // Hide users tab for non-admins

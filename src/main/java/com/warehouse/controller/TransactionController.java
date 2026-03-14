@@ -46,6 +46,7 @@ public class TransactionController {
 
     @FXML
     public void initialize() {
+        transactionsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
         setupColumns();
         setupFilters();
         loadData();
@@ -184,6 +185,7 @@ public class TransactionController {
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.setTitle(type.getDisplayName());
             dialog.setDialogPane(dialogPane);
+            ((Button) dialogPane.lookupButton(ButtonType.CANCEL)).setText("Отмена");
             dialog.initOwner(transactionsTable.getScene().getWindow());
 
             Optional<ButtonType> result = dialog.showAndWait();

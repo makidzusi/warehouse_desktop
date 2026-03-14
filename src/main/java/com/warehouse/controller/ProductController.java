@@ -40,6 +40,7 @@ public class ProductController {
 
     @FXML
     public void initialize() {
+        productsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
         setupColumns();
         setupSearch();
         loadData();
@@ -154,6 +155,7 @@ public class ProductController {
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.setTitle(product == null ? "Добавить товар" : "Редактировать товар");
             dialog.setDialogPane(dialogPane);
+            ((Button) dialogPane.lookupButton(ButtonType.CANCEL)).setText("Отмена");
             dialog.initOwner(productsTable.getScene().getWindow());
 
             Optional<ButtonType> result = dialog.showAndWait();

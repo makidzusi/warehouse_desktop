@@ -90,10 +90,20 @@
     -fx-letter-spacing: 3;
 }
 
-.sidebar-user {
-    -fx-font-size: 11px;
-    -fx-text-fill: #a0aec0;
+.sidebar-user-name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #e2e8f0;
     -fx-wrap-text: true;
+}
+
+.sidebar-user-role {
+    -fx-font-size: 10px;
+    -fx-text-fill: #3498db;
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(52,152,219,0.15);
+    -fx-background-radius: 4;
+    -fx-padding: 2 7 2 7;
 }
 
 .nav-menu {

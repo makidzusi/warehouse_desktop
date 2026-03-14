@@ -28,6 +28,7 @@ public class CategoryController {
 
     @FXML
     public void initialize() {
+        categoriesTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
         colId.setCellValueFactory(cd -> new SimpleIntegerProperty(cd.getValue().getId()).asObject());
         colName.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getName()));
         colDescription.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getDescription()));

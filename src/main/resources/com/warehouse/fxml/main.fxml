@@ -20,7 +20,8 @@
             <VBox styleClass="sidebar-header" spacing="4">
                 <padding><Insets top="20" right="16" bottom="20" left="16"/></padding>
                 <Label text="СКЛАД" styleClass="sidebar-logo"/>
-                <Label fx:id="userInfoLabel" styleClass="sidebar-user"/>
+                <Label fx:id="userNameLabel" styleClass="sidebar-user-name"/>
+                <Label fx:id="userRoleLabel" styleClass="sidebar-user-role"/>
             </VBox>
 
             <VBox styleClass="nav-menu" spacing="2" VBox.vgrow="ALWAYS">

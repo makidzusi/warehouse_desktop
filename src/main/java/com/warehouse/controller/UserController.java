@@ -32,6 +32,7 @@ public class UserController {
 
     @FXML
     public void initialize() {
+        usersTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
         colId.setCellValueFactory(cd -> new javafx.beans.property.SimpleIntegerProperty(cd.getValue().getId()).asObject());
         colUsername.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getUsername()));
         colFullName.setCellValueFactory(cd -> new SimpleStringProperty(cd.getValue().getFullName()));
