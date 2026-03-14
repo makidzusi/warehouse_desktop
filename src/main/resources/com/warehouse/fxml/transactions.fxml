@@ -15,6 +15,7 @@
         <Button text="Приход" onAction="#onIncoming" styleClass="btn-success"/>
         <Button text="Расход" onAction="#onOutgoing" styleClass="btn-danger"/>
         <Button text="Корректировка" onAction="#onAdjustment" styleClass="btn-secondary"/>
+        <Button text="Экспорт в Excel" onAction="#onExport" styleClass="btn-secondary"/>
     </HBox>
 
     <!-- Filter bar -->

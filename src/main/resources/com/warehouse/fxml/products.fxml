@@ -15,6 +15,7 @@
         <TextField fx:id="searchField" promptText="Поиск по названию / артикулу..."
                    prefWidth="260" styleClass="search-field"/>
         <Button text="Добавить товар" onAction="#onAdd" styleClass="btn-primary"/>
+        <Button text="Экспорт в Excel" onAction="#onExport" styleClass="btn-secondary"/>
     </HBox>
 
     <!-- Table -->

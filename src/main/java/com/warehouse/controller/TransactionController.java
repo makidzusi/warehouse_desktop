@@ -6,6 +6,7 @@ import com.warehouse.service.ProductService;
 import com.warehouse.service.ServiceFactory;
 import com.warehouse.service.TransactionService;
 import com.warehouse.util.AlertUtil;
+import com.warehouse.util.ExportService;
 import com.warehouse.util.SessionManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -13,7 +14,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
@@ -41,6 +44,7 @@ public class TransactionController {
     private final ProductService productService = ServiceFactory.getInstance().getProductService();
     private final NumberFormat nf = NumberFormat.getNumberInstance(new Locale("ru", "RU"));
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+    private final ExportService exportService = new ExportService();
 
     private ObservableList<Transaction> allTransactions;
 
@@ -139,6 +143,24 @@ public class TransactionController {
             })
             .collect(Collectors.toList());
         transactionsTable.setItems(FXCollections.observableArrayList(filtered));
+    }
+
+    @FXML
+    private void onExport() {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Сохранить отчёт по движению товаров");
+        chooser.getExtensionFilters().add(
+            new FileChooser.ExtensionFilter("Excel файл (*.xlsx)", "*.xlsx"));
+        chooser.setInitialFileName("транзакции.xlsx");
+        File file = chooser.showSaveDialog(transactionsTable.getScene().getWindow());
+        if (file == null) return;
+        try {
+            List<Transaction> data = transactionsTable.getItems();
+            exportService.exportTransactions(data, file.getAbsolutePath());
+            AlertUtil.showInfo("Экспорт завершён", "Файл сохранён:\n" + file.getAbsolutePath());
+        } catch (Exception e) {
+            AlertUtil.showError("Ошибка экспорта", e.getMessage());
+        }
     }
 
     @FXML private void onRefresh() { loadData(); applyFilters(); }

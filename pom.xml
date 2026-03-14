@@ -48,6 +48,13 @@
             <version>0.4</version>
         </dependency>
 
+        <!-- Apache POI — XLSX export -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.3.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -58,6 +65,12 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.warehouse.MainApp</mainClass>
+                    <options>
+                        <option>--add-opens=java.base/java.lang=org.apache.poi.poi</option>
+                        <option>--add-opens=java.base/java.lang=org.apache.poi.ooxml</option>
+                        <option>--add-opens=java.base/java.util=org.apache.poi.poi</option>
+                        <option>--add-opens=java.base/java.util=org.apache.poi.ooxml</option>
+                    </options>
                 </configuration>
             </plugin>
             <plugin>
