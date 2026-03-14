@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mvn compile:*)",
+      "Bash(mvn dependency:get -Dartifact=org.openjfx:javafx-controls:21.0.2 -q)",
+      "Bash(mvn dependency:get -Dartifact=org.openjfx:javafx-controls:21.0.5 -q)",
+      "Read(//c/Users/stas1/.m2/repository/org/openjfx/**)",
+      "Bash(for v:*)",
+      "Bash(do ls:*)",
+      "Bash(echo \"Found: $v\")",
+      "Bash(done)",
+      "Bash(mvn dependency:get -Dartifact=org.openjfx:javafx-charts:21.0.5)",
+      "Bash(rm -rf ~/.m2/repository/org/openjfx/javafx-charts/)",
+      "Bash(mvn dependency:get -Dartifact=org.openjfx:javafx-charts:21.0.2)",
+      "Bash(curl -s \"https://search.maven.org/solrsearch/select?q=g:org.openjfx+a:javafx-charts&rows=10&wt=json\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(doc[''''latestVersion''''], doc.get\\(''''v'''',''''''''\\)\\) for doc in d[''''response''''][''''docs'''']]\")",
+      "Bash(mvn dependency:get -Dartifact=org.openjfx:javafx-charts:21.0.6)",
+      "Bash(java --list-modules)",
+      "Bash(ls ~/.m2/repository/org/openjfx/javafx-controls/21.0.2/*.jar)",
+      "Bash(jar tf:*)",
+      "Bash(javap -verbose -cp ~/.m2/repository/org/openjfx/javafx-controls/21.0.2/javafx-controls-21.0.2-win.jar module-info)",
+      "Bash(cd /tmp)",
+      "Bash(jar xf:*)",
+      "Bash(javap module-info.class)",
+      "Bash(mvn javafx:run)"
+    ]
+  }
+}

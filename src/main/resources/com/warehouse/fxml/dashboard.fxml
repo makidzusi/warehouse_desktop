@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+
+<ScrollPane xmlns="http://javafx.openjfx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.warehouse.controller.DashboardController"
+            fitToWidth="true" styleClass="scroll-pane">
+
+    <VBox spacing="24">
+        <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+        <Label text="Главная панель" styleClass="page-title"/>
+
+        <!-- Stats cards -->
+        <HBox spacing="16">
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="Всего товаров" styleClass="stat-label"/>
+                <Label fx:id="totalProductsLabel" text="0" styleClass="stat-value"/>
+                <Label text="позиций" styleClass="stat-sub"/>
+            </VBox>
+            <VBox styleClass="stat-card stat-card-warning" HBox.hgrow="ALWAYS">
+                <Label text="Мало на складе" styleClass="stat-label"/>
+                <Label fx:id="lowStockLabel" text="0" styleClass="stat-value"/>
+                <Label text="товаров" styleClass="stat-sub"/>
+            </VBox>
+            <VBox styleClass="stat-card stat-card-success" HBox.hgrow="ALWAYS">
+                <Label text="Транзакций сегодня" styleClass="stat-label"/>
+                <Label fx:id="todayTransactionsLabel" text="0" styleClass="stat-value"/>
+                <Label text="операций" styleClass="stat-sub"/>
+            </VBox>
+            <VBox styleClass="stat-card stat-card-info" HBox.hgrow="ALWAYS">
+                <Label text="Оборот (исход)" styleClass="stat-label"/>
+                <Label fx:id="totalOutgoingLabel" text="0 ₽" styleClass="stat-value"/>
+                <Label text="за всё время" styleClass="stat-sub"/>
+            </VBox>
+        </HBox>
+
+        <!-- Charts row -->
+        <HBox spacing="16">
+            <VBox styleClass="chart-card" HBox.hgrow="ALWAYS">
+                <Label text="Движение за 30 дней" styleClass="card-title"/>
+                <LineChart fx:id="movementChart" prefHeight="280" legendVisible="true">
+                    <xAxis><CategoryAxis label="Дата"/></xAxis>
+                    <yAxis><NumberAxis label="Сумма (₽)"/></yAxis>
+                </LineChart>
+            </VBox>
+
+            <VBox styleClass="chart-card" prefWidth="300">
+                <Label text="Топ-10 товаров по обороту" styleClass="card-title"/>
+                <BarChart fx:id="topProductsChart" prefHeight="280" legendVisible="false">
+                    <xAxis><CategoryAxis/></xAxis>
+                    <yAxis><NumberAxis label="Кол-во"/></yAxis>
+                </BarChart>
+            </VBox>
+        </HBox>
+
+        <!-- Low stock table -->
+        <VBox styleClass="chart-card" spacing="8">
+            <Label text="Товары с низким остатком" styleClass="card-title"/>
+            <TableView fx:id="lowStockTable" prefHeight="200">
+                <columns>
+                    <TableColumn fx:id="lowSkuCol" text="Артикул" prefWidth="120"/>
+                    <TableColumn fx:id="lowNameCol" text="Наименование" prefWidth="250"/>
+                    <TableColumn fx:id="lowCategoryCol" text="Категория" prefWidth="150"/>
+                    <TableColumn fx:id="lowQtyCol" text="Остаток" prefWidth="80"/>
+                    <TableColumn fx:id="lowMinQtyCol" text="Минимум" prefWidth="80"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+</ScrollPane>

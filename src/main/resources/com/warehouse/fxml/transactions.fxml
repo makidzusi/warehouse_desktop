@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.openjfx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.warehouse.controller.TransactionController"
+      spacing="16">
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="Движение товаров" styleClass="page-title" HBox.hgrow="ALWAYS"/>
+        <Button text="Приход" onAction="#onIncoming" styleClass="btn-success"/>
+        <Button text="Расход" onAction="#onOutgoing" styleClass="btn-danger"/>
+        <Button text="Корректировка" onAction="#onAdjustment" styleClass="btn-secondary"/>
+    </HBox>
+
+    <!-- Filter bar -->
+    <HBox spacing="12" alignment="CENTER_LEFT" styleClass="filter-bar">
+        <padding><Insets top="8" right="12" bottom="8" left="12"/></padding>
+        <Label text="Тип:"/>
+        <ComboBox fx:id="typeFilter" prefWidth="160"/>
+        <Label text="Товар:"/>
+        <ComboBox fx:id="productFilter" prefWidth="220"/>
+        <Button text="Сбросить" onAction="#onResetFilter" styleClass="btn-secondary"/>
+        <Button text="Обновить" onAction="#onRefresh" styleClass="btn-primary"/>
+    </HBox>
+
+    <!-- Table -->
+    <TableView fx:id="transactionsTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+        <columns>
+            <TableColumn fx:id="colDate" text="Дата" prefWidth="140"/>
+            <TableColumn fx:id="colType" text="Тип" prefWidth="110"/>
+            <TableColumn fx:id="colProduct" text="Товар" prefWidth="200"/>
+            <TableColumn fx:id="colQty" text="Кол-во" prefWidth="80"/>
+            <TableColumn fx:id="colUnitPrice" text="Цена/ед" prefWidth="100"/>
+            <TableColumn fx:id="colTotal" text="Сумма" prefWidth="110"/>
+            <TableColumn fx:id="colCounterparty" text="Контрагент" prefWidth="150"/>
+            <TableColumn fx:id="colUser" text="Пользователь" prefWidth="140"/>
+            <TableColumn fx:id="colNote" text="Примечание" prefWidth="160"/>
+        </columns>
+        <placeholder><Label text="Нет транзакций."/></placeholder>
+    </TableView>
+</VBox>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.openjfx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.warehouse.controller.ProductController"
+      spacing="16">
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="Товары" styleClass="page-title" HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="searchField" promptText="Поиск по названию / артикулу..."
+                   prefWidth="260" styleClass="search-field"/>
+        <Button text="Добавить товар" onAction="#onAdd" styleClass="btn-primary"/>
+    </HBox>
+
+    <!-- Table -->
+    <TableView fx:id="productsTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+        <columns>
+            <TableColumn fx:id="colSku" text="Артикул" prefWidth="120"/>
+            <TableColumn fx:id="colName" text="Наименование" prefWidth="220"/>
+            <TableColumn fx:id="colCategory" text="Категория" prefWidth="140"/>
+            <TableColumn fx:id="colQuantity" text="Остаток" prefWidth="90"/>
+            <TableColumn fx:id="colUnit" text="Ед." prefWidth="60"/>
+            <TableColumn fx:id="colMinQty" text="Мин." prefWidth="60"/>
+            <TableColumn fx:id="colPrice" text="Цена" prefWidth="100"/>
+            <TableColumn fx:id="colStatus" text="Статус" prefWidth="110"/>
+            <TableColumn fx:id="colActions" text="Действия" prefWidth="170"/>
+        </columns>
+        <placeholder><Label text="Нет товаров. Добавьте первый товар."/></placeholder>
+    </TableView>
+</VBox>

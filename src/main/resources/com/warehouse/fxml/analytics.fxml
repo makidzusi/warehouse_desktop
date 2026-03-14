@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+
+<ScrollPane xmlns="http://javafx.openjfx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.warehouse.controller.AnalyticsController"
+            fitToWidth="true">
+
+    <VBox spacing="24">
+        <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+        <!-- Header -->
+        <HBox alignment="CENTER_LEFT" spacing="12">
+            <Label text="Аналитика" styleClass="page-title" HBox.hgrow="ALWAYS"/>
+            <Label text="Период:"/>
+            <ComboBox fx:id="periodCombo" prefWidth="140"/>
+            <Button text="Обновить" onAction="#onRefresh" styleClass="btn-primary"/>
+        </HBox>
+
+        <!-- Summary cards -->
+        <HBox spacing="16">
+            <VBox styleClass="stat-card stat-card-success" HBox.hgrow="ALWAYS">
+                <Label text="Общий приход" styleClass="stat-label"/>
+                <Label fx:id="totalIncomingLabel" text="0 ₽" styleClass="stat-value"/>
+            </VBox>
+            <VBox styleClass="stat-card stat-card-danger" HBox.hgrow="ALWAYS">
+                <Label text="Общий расход" styleClass="stat-label"/>
+                <Label fx:id="totalOutgoingLabel" text="0 ₽" styleClass="stat-value"/>
+            </VBox>
+            <VBox styleClass="stat-card stat-card-info" HBox.hgrow="ALWAYS">
+                <Label text="Всего товаров" styleClass="stat-label"/>
+                <Label fx:id="totalProductsLabel" text="0" styleClass="stat-value"/>
+            </VBox>
+            <VBox styleClass="stat-card stat-card-warning" HBox.hgrow="ALWAYS">
+                <Label text="Мало на складе" styleClass="stat-label"/>
+                <Label fx:id="lowStockLabel" text="0" styleClass="stat-value"/>
+            </VBox>
+        </HBox>
+
+        <!-- Movement chart -->
+        <VBox styleClass="chart-card">
+            <Label text="Приход и расход по дням" styleClass="card-title"/>
+            <AreaChart fx:id="areaChart" prefHeight="320" legendVisible="true">
+                <xAxis><CategoryAxis label="Дата"/></xAxis>
+                <yAxis><NumberAxis label="Сумма (₽)"/></yAxis>
+            </AreaChart>
+        </VBox>
+
+        <!-- Top products + Pie chart row -->
+        <HBox spacing="16">
+            <VBox styleClass="chart-card" HBox.hgrow="ALWAYS">
+                <Label text="Топ товаров по обороту" styleClass="card-title"/>
+                <BarChart fx:id="topBarChart" prefHeight="300" legendVisible="false">
+                    <xAxis><CategoryAxis/></xAxis>
+                    <yAxis><NumberAxis label="Кол-во"/></yAxis>
+                </BarChart>
+            </VBox>
+
+            <VBox styleClass="chart-card" prefWidth="320">
+                <Label text="Структура по категориям" styleClass="card-title"/>
+                <PieChart fx:id="categoryPieChart" prefHeight="300" legendVisible="true"/>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollPane>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import java.lang.String?>
+
+<BorderPane xmlns="http://javafx.openjfx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.warehouse.controller.MainController"
+            styleClass="main-root">
+
+    <stylesheets>
+        <String fx:value="/com/warehouse/css/styles.css"/>
+    </stylesheets>
+
+    <!-- Sidebar -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="220">
+            <VBox styleClass="sidebar-header" spacing="4">
+                <padding><Insets top="20" right="16" bottom="20" left="16"/></padding>
+                <Label text="СКЛАД" styleClass="sidebar-logo"/>
+                <Label fx:id="userInfoLabel" styleClass="sidebar-user"/>
+            </VBox>
+
+            <VBox styleClass="nav-menu" spacing="2" VBox.vgrow="ALWAYS">
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+
+                <Button fx:id="navDashboard" text="  Главная" maxWidth="Infinity"
+                        onAction="#showDashboard" styleClass="nav-btn, nav-btn-active"/>
+                <Button fx:id="navProducts" text="  Товары" maxWidth="Infinity"
+                        onAction="#showProducts" styleClass="nav-btn"/>
+                <Button fx:id="navCategories" text="  Категории" maxWidth="Infinity"
+                        onAction="#showCategories" styleClass="nav-btn"/>
+                <Button fx:id="navTransactions" text="  Движение" maxWidth="Infinity"
+                        onAction="#showTransactions" styleClass="nav-btn"/>
+                <Button fx:id="navAnalytics" text="  Аналитика" maxWidth="Infinity"
+                        onAction="#showAnalytics" styleClass="nav-btn"/>
+                <Button fx:id="navUsers" text="  Пользователи" maxWidth="Infinity"
+                        onAction="#showUsers" styleClass="nav-btn"/>
+            </VBox>
+
+            <VBox styleClass="sidebar-footer">
+                <padding><Insets top="8" right="8" bottom="16" left="8"/></padding>
+                <Button text="  Выйти" maxWidth="Infinity" onAction="#onLogout" styleClass="nav-btn-logout"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- Content area -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area"/>
+    </center>
+</BorderPane>

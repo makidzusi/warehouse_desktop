@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.openjfx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.warehouse.controller.UserController"
+      spacing="16">
+    <padding><Insets top="24" right="24" bottom="24" left="24"/></padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="Пользователи" styleClass="page-title" HBox.hgrow="ALWAYS"/>
+        <Button text="Добавить пользователя" onAction="#onAdd" styleClass="btn-primary"/>
+    </HBox>
+
+    <TableView fx:id="usersTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="colUsername" text="Логин" prefWidth="150"/>
+            <TableColumn fx:id="colFullName" text="Полное имя" prefWidth="220"/>
+            <TableColumn fx:id="colRole" text="Роль" prefWidth="140"/>
+            <TableColumn fx:id="colActive" text="Активен" prefWidth="90"/>
+            <TableColumn fx:id="colCreatedAt" text="Создан" prefWidth="140"/>
+            <TableColumn fx:id="colActions" text="Действия" prefWidth="160"/>
+        </columns>
+        <placeholder><Label text="Нет пользователей."/></placeholder>
+    </TableView>
+</VBox>

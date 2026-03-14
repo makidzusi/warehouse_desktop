@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import java.lang.String?>
+
+<DialogPane xmlns="http://javafx.openjfx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.warehouse.controller.TransactionDialogController"
+            prefWidth="460">
+
+    <stylesheets>
+        <String fx:value="/com/warehouse/css/styles.css"/>
+    </stylesheets>
+
+    <headerText>Операция с товаром</headerText>
+
+    <content>
+        <GridPane hgap="12" vgap="12">
+            <padding><Insets top="12" bottom="12"/></padding>
+
+            <Label text="Товар *" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <ComboBox fx:id="productCombo" prefWidth="280"
+                      GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Количество *" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <Spinner fx:id="quantitySpinner" min="1" max="999999" initialValue="1"
+                     prefWidth="140" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Цена за единицу *" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="priceField" promptText="0.00"
+                       GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label fx:id="counterpartyLabel" text="Поставщик" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="counterpartyField" promptText="Введите поставщика/покупателя"
+                       prefWidth="280" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <Label text="Примечание" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextArea fx:id="noteArea" prefRowCount="3" prefWidth="280" wrapText="true"
+                      GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+            <Label text="Итого:" styleClass="bold-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+            <Label fx:id="totalLabel" text="0.00 ₽" styleClass="total-value"
+                   GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        </GridPane>
+    </content>
+
+    <buttonTypes>
+        <ButtonType fx:constant="OK"/>
+        <ButtonType fx:constant="CANCEL"/>
+    </buttonTypes>
+</DialogPane>
